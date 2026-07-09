@@ -30,11 +30,7 @@ A pipeline está **incompleta**. Os steps de segurança precisam ser implementad
 Esse step é importante para procurar referencias diretas no codigos de segredos. 
 Esses segredos deveriam estar sendo passados como variaveis e estar contidos em algum vault que a aplicação então faz referencia para e busca em. 
 Dessa forma reduzindo a exposição do mesmo.
-Durante primeiros testes com o gitleaks, foi encontrado problema com só com o
-const API_KEY = ghp_xK92mNpL34rTvQ87wZaB56cDeFgHiJkL;
-
-Não estava pegando o 
-const DB_PASSWORD = admin@prod#2024;
+Durante primeiros testes com o gitleaks, foi encontrado problema com só com o API_KEY e não estava pegando o DB_PASSWORD
 
 Foi preciso então colocar um novo arquivo de configuração do gitleaks para forçar mais configs alem do padrão. 
 Uma vez feito isso pegou o DB_PASSWORD
