@@ -22,7 +22,7 @@ jobs:
       - name: 📥 Checkout do Código
         uses: actions/checkout@v4
 
-      # ✅ PASSO 2: Já está pronto — Build
+      # ✅ PASSO 2: Já está pronto — Build.
       - name: ⚙️ Build
         run: |
           echo "Verificando arquivos..."
