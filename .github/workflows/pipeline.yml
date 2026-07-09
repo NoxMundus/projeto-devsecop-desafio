@@ -21,6 +21,10 @@ jobs:
       # ✅ PASSO 1: Já está pronto — Baixar o código
       - name: 📥 Checkout do Código
         uses: actions/checkout@v4
+        #------------------
+        with:
+          fetch-depth: 0
+        #------------------
 
       # ✅ PASSO 2: Já está pronto — Build.
       - name: ⚙️ Build
@@ -32,8 +36,13 @@ jobs:
       # ❌ PASSO 3: IMPLEMENTE AQUI — Secrets Scanning com Gitleaks
       # Dica: use a action oficial "gitleaks/gitleaks-action@v2"
       - name: 🔑 Secrets Scanning
-        run: echo "TODO - implemente o Secrets Scanning com Gitleaks aqui"
+        # run: echo "TODO - implemente o Secrets Scanning com Gitleaks aqui"
         # SUBSTITUA o run acima pela implementação correta com "uses:"
+        #------------------
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #------------------
 
       # ❌ PASSO 4: IMPLEMENTE AQUI — SAST com Semgrep
       # Dica: instale com "pip install semgrep" e rode "semgrep scan --config auto --error src/"
