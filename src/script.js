@@ -1,5 +1,5 @@
-const API_KEY = "SenhadaAPIKey";
-const DB_PASSWORD = "admin@prod#2024";
+const API_KEY = "TEMP_VAR_NO_VAULT_API";
+const DB_PASSWORD = "TEMP_VAR_NO_VAULT_DB";
 
 // Busca tarefas do "banco de dados"
 fetch('db.json')
