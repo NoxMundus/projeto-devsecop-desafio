@@ -37,6 +37,26 @@ Uma vez feito isso pegou o DB_PASSWORD
 
 Ambas variaveis foram então corrigidas para valores temporarios que devem ser corrigidos no futuro. 
 Com isso dito, acho que o arquivo de conf do GitLeaks teria que ser editado de forma correta para uso real, o atual esta talvez abrangente demais e não sei se isso é uma boa prática. 
+Como colocar valores falsos nas variaveis estava quebrando o codigo, mas deixar chapado agora impede o gitleaks, eu por hora deixei eles vazias. 
+
+### Segundo Step - Semgrep
+
+Esse step é importante para procurar vulnerabilidades no codigo. 
+
+Ao executar o Semgrep apontou um problema com o:
+    src/script.js
+    ❯❱ javascript.browser.security.eval-detected.eval-detected
+          ❰❰ Blocking ❱❱
+          Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this 
+          content can be input from outside the program, this may be a code injection vulnerability. Ensure
+          evaluated content is not definable by external sources.                                          
+          Details: https://sg.run/7ope                                                                     
+                                                                                                           
+           29┆ eval('console.log("Tarefa adicionada: ' + input.value + '")');
+
+Conforme listado então, seria uma vulnerabilidade de Injection, foi feito a correção do codigo.
+
+### Terceiro Step - Grype
 
 ## URL de Produção
 > Adicione aqui o link do GitHub Pages após o deploy.
