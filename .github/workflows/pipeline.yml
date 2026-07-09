@@ -22,8 +22,8 @@ jobs:
       - name: 📥 Checkout do Código
         uses: actions/checkout@v4
         #------------------
-        with:
-          fetch-depth: 0
+        #with:
+        #  fetch-depth: 0
         #------------------
 
       # ✅ PASSO 2: Já está pronto — Build.
