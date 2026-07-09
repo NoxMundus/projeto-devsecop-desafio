@@ -41,7 +41,7 @@ Como colocar valores falsos nas variaveis estava quebrando o codigo, mas deixar 
 
 ### Segundo Step - Semgrep
 
-Esse step é importante para procurar vulnerabilidades no codigo. 
+Esse step é importante para procurar vulnerabilidades no codigo, como o exemplo abaixo encontrado.
 
 Ao executar o Semgrep apontou um problema com o:
     src/script.js
@@ -57,6 +57,19 @@ Ao executar o Semgrep apontou um problema com o:
 Conforme listado então, seria uma vulnerabilidade de Injection, foi feito a correção do codigo.
 
 ### Terceiro Step - Grype
+
+Esse step é importante para procurar vulnerabilidades no supplychain, ou seja, caso alguma dependencia que está sendo utilizada tem uma vulnerabilidade já mapeada. 
+
+Para esse step o aparentemente não treve erros? 
+
+Run curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+[info] checking github for the current release tag 
+[info] fetching release script for tag='v0.115.0' 
+[info] checking github for the current release tag 
+[info] using release tag='v0.115.0' version='0.115.0' os='linux' arch='amd64' 
+[info] installed /usr/local/bin/grype 
+[0000]  WARN no explicit name and version provided for directory source, deriving artifact ID from the given path (which is not ideal) from=syft
+No vulnerabilities found
 
 ## URL de Produção
 > Adicione aqui o link do GitHub Pages após o deploy.
