@@ -46,9 +46,9 @@ jobs:
         run: echo "TODO - implemente o SAST com Semgrep aqui"
         # SUBSTITUA pelo comando real: pip install semgrep && semgrep scan --config auto --error src/
         #------------------
-        #run: |
-        #  pip install semgrep
-        #  semgrep scan --config auto --error src/
+        run: |
+          pip install semgrep
+          semgrep scan --config auto --error src/
         #------------------
         
       # ❌ PASSO 5: IMPLEMENTE AQUI — SCA com Grype
