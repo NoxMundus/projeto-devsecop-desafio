@@ -1,5 +1,5 @@
-const API_KEY = TempVarNoVaultAPI;
-const DB_PASSWORD = TempVarNoVaultDB;
+const API_KEY = "";
+const DB_PASSWORD = "";
 
 // Busca tarefas do "banco de dados"
 fetch('db.json')
