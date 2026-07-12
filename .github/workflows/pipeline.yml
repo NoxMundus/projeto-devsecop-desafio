@@ -16,6 +16,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      API_KEY: ${{ secrets.API_KEY }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
     steps:
       # ✅ PASSO 1: Já está pronto — Baixar o código
@@ -28,9 +30,6 @@ jobs:
           echo "Verificando arquivos..."
           ls src/
           echo "Build OK!"
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
       # ✅ PASSO 3: IMPLEMENTE AQUI — Secrets Scanning com Gitleaks
       # Dica: use a action oficial "gitleaks/gitleaks-action@v2"

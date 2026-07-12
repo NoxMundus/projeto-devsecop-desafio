@@ -29,19 +29,18 @@ A pipeline está **incompleta**. Os steps de segurança precisam ser implementad
 
 Esse step é importante para procurar referencias diretas no codigos de segredos. 
 Esses segredos deveriam estar sendo passados como variaveis e estar contidos em algum vault que a aplicação então faz referencia para e busca em. 
-Dessa forma reduzindo a exposição do mesmo.
+Dessa forma reduzindo a exposição dos mesmos.
 Durante primeiros testes com o gitleaks, foi encontrado problema com só com o API_KEY e não estava pegando o DB_PASSWORD
 
 Foi preciso então colocar um novo arquivo de configuração do gitleaks para forçar mais configs alem do padrão. 
 Uma vez feito isso pegou o DB_PASSWORD
 
-Ambas variaveis foram então corrigidas para valores temporarios que devem ser corrigidos no futuro. 
-Com isso dito, acho que o arquivo de conf do GitLeaks teria que ser editado de forma correta para uso real, o atual esta talvez abrangente demais e não sei se isso é uma boa prática. 
-Como colocar valores falsos nas variaveis estava quebrando o codigo, mas deixar chapado agora impede o gitleaks, eu por hora deixei eles vazias. 
+Eu basicamente aqui fiz uso do GitSecrets para "ocultar" as variaveis. Então agora esta como referenciado no script e no pipeline as variaveis. 
 
 ### Segundo Step - Semgrep
 
-Esse step é importante para procurar vulnerabilidades no codigo, como o exemplo abaixo encontrado.
+Esse step é importante para procurar vulnerabilidades no codigo do proprio time, como o exemplo abaixo encontrado.
+Pode ocorrer de que o time escreva um codigo que seja funcional, mas que exponha vulnerabilidades desnecessarias aumentando a superficie de ataque da aplicação como um todo, esses problemas precisam ser corrigidos.
 
 Ao executar o Semgrep apontou um problema com o:
     src/script.js
@@ -58,9 +57,10 @@ Conforme listado então, seria uma vulnerabilidade de Injection, foi feito a cor
 
 ### Terceiro Step - Grype
 
-Esse step é importante para procurar vulnerabilidades no supplychain, ou seja, caso alguma dependencia que está sendo utilizada tem uma vulnerabilidade já mapeada. 
+Esse step é importante para procurar vulnerabilidades no supplychain, ou seja, caso alguma dependencia que está sendo utilizada tem uma vulnerabilidade já mapeada.
+Como hoje em dia é muito comum que se utilize bibliotecas de terceiros e assim por diante, é vital se verificar se essas mesmas tem vulnerabilidades conhecidas. 
 
-Para esse step o aparentemente não treve erros? 
+Para esse step o aparentemente não treve erros? Imagino que por ser um codigo mais simples ele não chegou a importar algo com problema. 
 
 Run curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 [info] checking github for the current release tag 
@@ -72,4 +72,4 @@ Run curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh |
 No vulnerabilities found
 
 ## URL de Produção
-> Adicione aqui o link do GitHub Pages após o deploy.
+> [Link para a pagina desse projeto](https://noxmundus.github.io/projeto-devsecop-desafio/)
