@@ -1,5 +1,5 @@
-const API_KEY = "";
-const DB_PASSWORD = "";
+const API_KEY = process.env.API_KEY_SECRETA || ""; 
+const DB_PASSWORD = process.env.DB_PASSWORD_SECRETO || "";
 
 // Busca tarefas do "banco de dados"
 fetch('db.json')
