@@ -37,6 +37,19 @@ Uma vez feito isso pegou o DB_PASSWORD
 
 Eu basicamente aqui fiz uso do GitSecrets para "ocultar" as variaveis. Então agora esta como referenciado no script e no pipeline as variaveis. 
 
+Agora esta passando pelo gitleaks e nos logs da pipe esta como, 
+
+const API_KEY = "***"; 
+const DB_PASSWORD = "***";
+
+ou seja, esta oculto para o codigo e para a pipeline.
+Olhando pelo F12 no firefox: 
+
+const API_KEY = "SenhaDaAPIKey"; 
+const DB_PASSWORD = "SenhadoBancodeDados";
+
+Ou seja, esta carregando os valores. Assumindo que não fosse um projeto do pages então os valores possivelmente não estariam expostos, teria que validar no log da aplicação do outro lado, mas para o projeto exemplifica uma forma inicial de ocultar senhas mesmo que não tão ideal quanto um vault. 
+
 ### Segundo Step - Semgrep
 
 Esse step é importante para procurar vulnerabilidades no codigo do proprio time, como o exemplo abaixo encontrado.
