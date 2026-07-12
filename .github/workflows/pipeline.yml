@@ -28,6 +28,9 @@ jobs:
           echo "Verificando arquivos..."
           ls src/
           echo "Build OK!"
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
       # ✅ PASSO 3: IMPLEMENTE AQUI — Secrets Scanning com Gitleaks
       # Dica: use a action oficial "gitleaks/gitleaks-action@v2"
@@ -51,7 +54,7 @@ jobs:
           semgrep scan --config auto --error src/
         #------------------
         
-      # ❌ PASSO 5: IMPLEMENTE AQUI — SCA com Grype
+      # ✅ PASSO 5: IMPLEMENTE AQUI — SCA com Grype
       # Dica: instale com "curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin"
       # e rode "grype dir:. --fail-on medium"
       - name: 📦 SCA - Grype
