@@ -45,8 +45,8 @@ const DB_PASSWORD = "***";
 ou seja, esta oculto para o codigo e para a pipeline.
 Olhando pelo F12 no firefox: 
 
-const API_KEY = "SenhaDaAPIKey"; 
-const DB_PASSWORD = "SenhadoBancodeDados";
+const API_KEY = SenhaDaAPIKey; 
+const DB_PASSWORD = SenhadoBancodeDados;
 
 Ou seja, esta carregando os valores. Assumindo que não fosse um projeto do pages então os valores possivelmente não estariam expostos, teria que validar no log da aplicação do outro lado, mas para o projeto exemplifica uma forma inicial de ocultar senhas mesmo que não tão ideal quanto um vault. 
 
