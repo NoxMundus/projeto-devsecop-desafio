@@ -9,6 +9,10 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  API_KEY: ${{ secrets.API_KEY }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
 jobs:
   pipeline:
     name: Build, Segurança e Deploy
@@ -16,8 +20,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      API_KEY: ${{ secrets.API_KEY }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
     steps:
       # ✅ PASSO 1: Já está pronto — Baixar o código
