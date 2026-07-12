@@ -31,6 +31,21 @@ jobs:
         run: |
           echo "Verificando arquivos..."
           ls src/
+
+          # === INJEÇÃO DAS SECRETS ===
+          echo "🔐 Injetando API_KEY e DB_PASSWORD..."
+
+          # Substitui os valores vazios (ajuste o caminho se o arquivo tiver nome diferente)
+          sed -i 's|const API_KEY = "";|const API_KEY = "'"$API_KEY"'";|g' src/script.js
+          sed -i 's|const DB_PASSWORD = "";|const DB_PASSWORD = "'"$DB_PASSWORD"'";|g' src/script.js
+
+          echo "✅ Secrets injetadas!"
+
+          # Mostra o resultado para você verificar
+          echo "📂 Arquivos depois da modificação:"
+          grep -E "API_KEY|DB_PASSWORD" src/script.js || echo "Não encontrou as linhas"
+
+
           echo "Build OK!"
 
       # ✅ PASSO 3: IMPLEMENTE AQUI — Secrets Scanning com Gitleaks
